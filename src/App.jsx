@@ -8,9 +8,9 @@ function App() {
   useEffect(() => {
     axios
       .get("http://ansible/api/document/202911")
-      .then((data) => {
-        setDocument(data.data[0]);
-        console.log(data.data[0]);
+      .then((api) => {
+        setDocument(api.data[0]);
+        console.log(api.data[0]);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -19,9 +19,9 @@ function App() {
     setInput(e.target.value);
   };
   const searchDocument = () => {
-    axios.get(`http://ansible/api/document/${input}`).then((data) => {
-      console.log(data.data[0]);
-      setDocument(data.data[0]);
+    axios.get(`http://ansible/api/document/${input}`).then((api) => {
+      // console.log(api.data[0]);
+      setDocument(api.data[0]);
     });
   };
 
