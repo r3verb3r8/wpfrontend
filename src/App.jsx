@@ -5,6 +5,7 @@ import axios from "axios";
 function App() {
   const [document, setDocument] = useState({});
   const [input, setInput] = useState("");
+
   useEffect(() => {
     axios
       .get("http://ansible/api/document/202911")
@@ -14,13 +15,14 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, []);
+
   // Event
   const documentInput = (e) => {
     setInput(e.target.value);
   };
+
   const searchDocument = () => {
     axios.get(`http://ansible/api/document/${input}`).then((api) => {
-      // console.log(api.data[0]);
       setDocument(api.data[0]);
     });
   };
